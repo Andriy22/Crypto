@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,14 @@ namespace Crypto
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Videocard> list;
+        public ObservableCollection<Videocard> list;
+        public List<CryptoValute> cv;
         public MainWindow()
         {
             InitializeComponent();
 
 
-            List<CryptoValute> cv = new List<CryptoValute>() { new CryptoValute() { Coef = 1.3, Name = "BTC", Value = 0 },
+            cv = new List<CryptoValute>() { new CryptoValute() { Coef = 1.3, Name = "BTC", Value = 0 },
             new CryptoValute() { Coef = 0.8, Name = "ETH", Value = 0 },
             new CryptoValute() { Coef = 0.4, Name = "CAR", Value = 0 }};
 
@@ -34,7 +36,7 @@ namespace Crypto
             new CryptoValute() { Coef = 0.8, Name = "ETH", Value = 0 },
             new CryptoValute() { Coef = 0.4, Name = "CAR", Value = 0 }};
 
-            list = new List<Videocard>()
+            list = new ObservableCollection<Videocard>()
             {
                 new Videocard(){Name="GTX 650",Power=400,Cryptos=cv},
                  new Videocard(){Name="GTX 1080",Power=700,Cryptos=cv2}
@@ -58,6 +60,18 @@ namespace Crypto
         {
             var vid = list.First(x => x == LbMain.SelectedItem);
             vid.StopThreading();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddWindow window = new AddWindow();
+            window.ShowDialog();
+            if (window.videocard == null)
+                return;
+            var tmp = window.videocard;
+            tmp.Cryptos = cv;
+            list.Add(tmp);
+
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿<Window x:Class="Crypto.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Crypto"
+        mc:Ignorable="d"
+        Title="AddVideoCard" Height="500" Width="785.45" FontSize="20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <StackPanel Margin="40" >
+            <Label >Name VideoCard</Label>
+            <TextBox Name="tbNameVideo"/>
+        </StackPanel>
+        <StackPanel Margin="40" Grid.Row="1">
+            <Label >Power VideoCard</Label>
+
+            <TextBox  Name="tbPower"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" >
+            <Button  Margin="100,10" Click="Button_Click_1" Content="Add"/>
+            <Button Margin="100,10" Click="Button_Click" Content="Cancel"/>
+
+        </StackPanel>
+
+
+    </Grid>
+</Window>
