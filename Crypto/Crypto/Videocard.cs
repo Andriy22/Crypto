@@ -17,8 +17,7 @@ namespace Crypto
 
         public Videocard()
         {
-           
-
+          
            
 
         }

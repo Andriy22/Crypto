@@ -41,8 +41,12 @@ namespace Crypto
                 new Videocard(){Name="GTX 650",Power=400,Cryptos=cv},
                  new Videocard(){Name="GTX 1080",Power=700,Cryptos=cv2}
             };
+            foreach (var v in list)
+            {
+                v.CurrentCrypto = v.Cryptos.First();
+            }
 
-      
+
 
             LbMain.ItemsSource = list;
         }
@@ -71,6 +75,20 @@ namespace Crypto
             var tmp = window.videocard;
             tmp.Cryptos = cv;
             list.Add(tmp);
+
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+            if (this.Left <= -50)
+                this.Close();
+            if (this.Left >= 1200)
+            {
+
+                this.Visibility = Visibility.Collapsed;
+                ShowInTaskbar = true;
+            }
 
         }
     }
